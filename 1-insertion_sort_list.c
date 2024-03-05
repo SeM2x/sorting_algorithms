@@ -27,6 +27,7 @@ listint_t *swap_nodes(listint_t **list, listint_t *node1, listint_t *node2)
 	if (next)
 		next->prev = node2;
 
+	print_list(*list);
 	return (node2);
 }
 /**
@@ -48,12 +49,10 @@ void insertion_sort_list(listint_t **list)
 		if (node->n < node->prev->n)
 		{
 			node = swap_nodes(list, node, node->prev);
-			print_list(*list);
 			current = node->prev;
 			while (current && current->prev && current->n < current->prev->n)
 			{
 				current = swap_nodes(list, current, current->prev);
-				print_list(*list);
 				current = current->prev;
 			}
 		}
