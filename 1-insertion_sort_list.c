@@ -3,6 +3,7 @@
 /**
  * swap_nodes - swaps two nodes.
  *
+ * @list: the head of the list
  * @node1: node 1
  * @node2: node 2
  * Return: a pointer to the swapped node.
@@ -38,7 +39,7 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *node = NULL, *current = NULL;
 
-	if (!(*list))
+	if (!list || !(*list))
 		return;
 
 	node = (*list)->next;
