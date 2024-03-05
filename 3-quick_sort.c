@@ -10,41 +10,41 @@
  * @origin_size: the size
  */
 void quick_sort_recursive(int *array, size_t size,
-                          int *origin_array, int origin_size)
+						  int *origin_array, int origin_size)
 {
-    int pivot = size - 1, tmp;
-    int i, j;
+	int pivot = size - 1, tmp;
+	int i, j;
 
-    if (size < 2)
-        return;
+	if (size < 2)
+		return;
 
-    j = 0;
-    for (i = 0; i < (int)size; i++)
-    {
-        if (array[i] < array[pivot])
-        {
-            if (i != j)
-            {
-                tmp = array[i];
-                array[i] = array[j];
-                array[j] = tmp;
-                print_array(origin_array, origin_size);
-            }
-            j++;
-        }
-    }
+	j = 0;
+	for (i = 0; i < (int)size; i++)
+	{
+		if (array[i] < array[pivot])
+		{
+			if (i != j && array[i] != array[j])
+			{
+				tmp = array[i];
+				array[i] = array[j];
+				array[j] = tmp;
+				print_array(origin_array, origin_size);
+			}
+			j++;
+		}
+	}
 
-    if (pivot != j)
-    {
-        tmp = array[pivot];
-        array[pivot] = array[j];
-        array[j] = tmp;
-        print_array(origin_array, origin_size);
-    }
+	if (pivot != j && array[pivot] != array[j])
+	{
+		tmp = array[pivot];
+		array[pivot] = array[j];
+		array[j] = tmp;
+		print_array(origin_array, origin_size);
+	}
 
-    quick_sort_recursive(array, j, origin_array, origin_size);
-    quick_sort_recursive(array + j + 1, size - j - 1,
-                         origin_array, origin_size);
+	quick_sort_recursive(array, j, origin_array, origin_size);
+	quick_sort_recursive(array + j + 1, size - j - 1,
+						 origin_array, origin_size);
 }
 /**
  * quick_sort - sorts an array of integers
@@ -55,5 +55,5 @@ void quick_sort_recursive(int *array, size_t size,
  */
 void quick_sort(int *array, size_t size)
 {
-    quick_sort_recursive(array, size, array, size);
+	quick_sort_recursive(array, size, array, size);
 }
